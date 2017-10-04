@@ -8238,7 +8238,10 @@ declare namespace __esri {
     complete(): void;
 
     on(name:"cursor-update", eventHandler: PointDrawActionCursorUpdateEventHandler): IHandle;
+    on(name:"cursor-update", modifiers: string[], eventHandler: PointDrawActionCursorUpdateEventHandler): IHandle;    
+    on(name:"draw-complete", eventHandler: PointDrawActionDrawCompleteEventHandler): IHandle;
     on(name:"draw-complete", modifiers: string[], eventHandler: PointDrawActionDrawCompleteEventHandler): IHandle;
+    
   }
 
   interface PointDrawActionConstructor {
