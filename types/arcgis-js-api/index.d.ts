@@ -8236,6 +8236,9 @@ declare namespace __esri {
     view: MapView;
 
     complete(): void;
+
+    on(name:"cursor-update", eventHandler: PointDrawActionCursorUpdateEventHandler): IHandle;
+    on(name:"draw-complete", modifiers: string[], eventHandler: PointDrawActionDrawCompleteEventHandler): IHandle;
   }
 
   interface PointDrawActionConstructor {
@@ -8246,6 +8249,20 @@ declare namespace __esri {
 
   interface PointDrawActionProperties {
     view?: MapViewProperties;
+  }
+
+  export interface PointDrawActionCursorUpdateEvent {
+    defaultPrevented: boolean;
+    preventDefault: Function;
+    type: string;
+    coordinates: number[];
+  }
+
+  export interface PointDrawActionDrawCompleteEvent {
+    defaultPrevented: boolean;
+    preventDefault: Function;
+    type: string;
+    coordinates: number[];
   }
 
   interface PolygonDrawAction extends Accessor, Evented {
@@ -11032,6 +11049,10 @@ declare namespace __esri {
   export type PointCloudLayerLayerviewCreateEventHandler = (event: PointCloudLayerLayerviewCreateEvent) => void;
 
   export type PointCloudLayerLayerviewDestroyEventHandler = (event: PointCloudLayerLayerviewDestroyEvent) => void;
+
+  export type PointDrawActionCursorUpdateEventHandler = (event: PointDrawActionCursorUpdateEvent) => void;
+
+  export type PointDrawActionDrawCompleteEventHandler = (event: PointDrawActionDrawCompleteEvent) => void;
 
   export type PolygonDrawActionCursorUpdateEventHandler = (event: PolygonDrawActionCursorUpdateEvent) => void;
 
